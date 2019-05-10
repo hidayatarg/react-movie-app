@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import MovieList from '../MovieList'
 
 class MoviesPage extends Component {
   static propTypes = {
@@ -14,6 +15,8 @@ class MoviesPage extends Component {
     return (
       <div>
         <h2>Movies Page</h2>
+        {/* calling Movie Component Passing the movies */}
+        <MovieList movies={this.props.movies}></MovieList>
       </div>
     )
   }
