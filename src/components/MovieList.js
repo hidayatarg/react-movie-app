@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // stateless component
-const MovieList = props => {
+const MovieList = ({movies}) => {
     const emptyMessage = (
         <p>There are no movies yet.</p>
     );
@@ -14,7 +14,7 @@ const MovieList = props => {
     return (
       <div>
         {/* Movies List */}
-        {props.movies.length === 0 ? emptyMessage : movieList}
+        {movies.length === 0 ? emptyMessage : movieList}
       </div>
     )
   
