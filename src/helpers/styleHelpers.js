@@ -13,9 +13,3 @@ export const fixedMenuStyle = {
     boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
 };
 
-export const overlayStyle = {
-    float: 'left',
-    margin: '0em 3em 1em 0em',
-};
-
-
