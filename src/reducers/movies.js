@@ -1,7 +1,10 @@
 import { FETCHED_MOVIES } from '../actions/movies';
 
 const initialState = {
-    movies: []
+    fetching: false,
+    fetched: false,
+    movies: [],
+    error: {}
 };
 
 export default (state = initialState, action) => {
