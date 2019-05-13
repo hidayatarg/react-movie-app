@@ -21,7 +21,7 @@ const MovieList = ({movies}) => {
 }
 
 MovieList.prototype = {
-    movies: PropTypes.array.isRequired
+    movies: PropTypes.object.isRequired
 };
 
 

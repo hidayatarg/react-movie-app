@@ -8,7 +8,7 @@ import { fetchMovies } from '../../actions/movies'
 class MoviesPage extends Component {
   static propTypes = {
     // will be an arry and it will be required
-    movies: PropTypes.array.isRequired
+    movies: PropTypes.object.isRequired
   }
   
   componentDidMount() {
