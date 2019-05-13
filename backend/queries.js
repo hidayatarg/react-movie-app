@@ -5,7 +5,11 @@ const getMovies = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results.rows)
+        const res = {
+            success: true, 
+            data: results.rows
+        }
+        response.status(200).json(res)
     })
 }
 
