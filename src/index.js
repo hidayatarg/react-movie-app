@@ -7,9 +7,10 @@ import * as serviceWorker from './serviceWorker';
 // creating store
 import { createStore, applyMiddleware } from 'redux';
 
-// thunk middleware
+//  middlewares
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import reduxPromise from 'redux-promise-middleware';
 
 import rootReducer from './reducers/rootReducer';
 
@@ -23,7 +24,7 @@ const store = createStore(
     rootReducer,
     // applyMiddleware(thunk)
     composeWithDevTools(
-        applyMiddleware(thunk, logger)
+        applyMiddleware(reduxPromise, thunk, logger)
     )
 );
 

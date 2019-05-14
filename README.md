@@ -15,3 +15,5 @@ Redux Logger
 npm i redux-logger --save
 
 Now we can read the states from console.
+
+npm i redux-promise-middleware --save
