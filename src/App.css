@@ -24,6 +24,10 @@
   margin-bottom: 10px;
 }
 
+.inlineError {
+  color: #f44336;
+}
+
 .App-link {
   color: #61dafb;
 }

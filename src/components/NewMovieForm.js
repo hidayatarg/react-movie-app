@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Button, Form, Image } from 'semantic-ui-react'
+import InlineError from './InlineError'
+
 
 export default class NewMovieForm extends Component {
     state = {
         title : '',
         cover : '',
         // hata
-        error : {}
+        errors: {}
     };
 
     handleChange = (event) => {
@@ -19,6 +21,10 @@ export default class NewMovieForm extends Component {
         // validation
         const errors = this.validate();
         console.log('error: ', errors);
+        // send the error to state
+        this.setState({
+            errors
+        })
         
     };
 
@@ -31,12 +37,14 @@ export default class NewMovieForm extends Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div>
                 <h2>New Movie</h2>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Field>
                         <label>Title</label>
+                        {errors.title && <InlineError message = {errors.title}/>}
                         <input 
                         id="title"
                         name="title"
@@ -46,6 +54,7 @@ export default class NewMovieForm extends Component {
                     </Form.Field>
                     <Form.Field>
                         <label>Cover</label>
+                        {errors.cover && <InlineError message={errors.cover} />}
                         <input 
                         id="cover"
                         name="cover"
