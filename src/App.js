@@ -20,7 +20,7 @@ class App extends Component {
 					<Route path='/movies' component={MoviesPage}></Route>
 					
         		</Container>
-				<Footer />>
+				<Footer />
 			</div>
 		);
 	}

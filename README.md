@@ -21,3 +21,7 @@ npm i redux-promise-middleware --save
 Spinner 
 
 npm install react-spinners --save
+
+Active Link
+
+  <Menu.Item as={NavLink} to="/movies" activeClassName="selected">
