@@ -7,7 +7,6 @@ export default class NewMoviePage extends Component {
   render() {
     return (
       <div>
-        <h1>New movie Page</h1>
         <NewMovieForm />
       </div>
     )
