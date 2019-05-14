@@ -4,20 +4,37 @@ import { Button, Form, Image } from 'semantic-ui-react'
 export default class NewMovieForm extends Component {
     state = {
         title : '',
-        cover : ''
+        cover : '',
+        // hata
+        error : {}
     };
 
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
+    };
+
+    onSubmit = () => {
+        // validation
+        const errors = this.validate();
+        console.log('error: ', errors);
+        
+    };
+
+    validate = () => {
+        const error = {}
+        if (!this.state.title) error.title = "Can't be blanck";
+        if (!this.state.cover) error.cover = "Can't be blanck";
+        return error
+        
     }
 
     render() {
         return (
             <div>
                 <h2>New Movie</h2>
-                <Form>
+                <Form onSubmit={this.onSubmit}>
                     <Form.Field>
                         <label>Title</label>
                         <input 
