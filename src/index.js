@@ -9,6 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 // thunk middleware
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import rootReducer from './reducers/rootReducer';
 
@@ -22,7 +23,7 @@ const store = createStore(
     rootReducer,
     // applyMiddleware(thunk)
     composeWithDevTools(
-        applyMiddleware(thunk)
+        applyMiddleware(thunk, logger)
     )
 );
 
