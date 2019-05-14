@@ -19,8 +19,8 @@ class App extends Component {
 				<Header />
 				<Container text>
 				{/* ! Routing are made here */}
-					<Route path='/movies' component={MoviesPage}></Route>
-					<Route path='/movies/new' component={NewMoviePage}></Route>
+					<Route exact path='/movies' component={MoviesPage}></Route>
+					<Route exact path='/movies/new' component={NewMoviePage}></Route>
 					
         		</Container>
 				<Footer />

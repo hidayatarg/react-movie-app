@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
+import NewMovieForm from '../NewMovieForm';
 export default class NewMoviePage extends Component {
     state = {
 
@@ -8,6 +8,7 @@ export default class NewMoviePage extends Component {
     return (
       <div>
         <h1>New movie Page</h1>
+        <NewMovieForm />
       </div>
     )
   }
