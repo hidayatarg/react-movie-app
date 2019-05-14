@@ -14,7 +14,12 @@ const MovieList = ({ movies }) => {
       {
         movies.error.response
           ? <h3>Error retrieving data</h3>
-          : movies.movies.map(movie => <MovieCard key={movie.id} movie={movie} />)
+          : 
+          <Grid stackable columns={3}>
+          {
+            movies.movies.map(movie => <MovieCard key={movie.id} movie={movie} />)
+          }
+          </Grid>
       }
     </div>
   );
