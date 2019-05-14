@@ -10,7 +10,11 @@ const MovieList = ({movies}) => {
     const movieList = (
         <div>
           {
-            movies.error.response ?   <h3>Error retrieving data</h3> : 'No Error'
+            movies.error.response 
+            ?   <h3>Error retrieving data</h3> 
+            :   movies.movies.map(movie => <div key={movie.id}>
+                {movie.title}
+            </div>)
           }
         </div>
     );
