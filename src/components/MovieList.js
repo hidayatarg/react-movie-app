@@ -21,7 +21,10 @@ const MovieList = ({movies}) => {
 }
 
 MovieList.prototype = {
-    movies: PropTypes.object.isRequired
+  // state movies convert to array
+    movies: PropTypes.shape({
+      movies: PropTypes.array.isRequired,
+    }).isRequired
 };
 
 
