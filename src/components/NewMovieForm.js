@@ -42,7 +42,7 @@ export default class NewMovieForm extends Component {
             <div>
                 <h2>New Movie</h2>
                 <Form onSubmit={this.onSubmit}>
-                    <Form.Field>
+                    <Form.Field error={!!errors.title}>
                         <label>Title</label>
                         {errors.title && <InlineError message = {errors.title}/>}
                         <input 
@@ -52,7 +52,7 @@ export default class NewMovieForm extends Component {
                         onChange={this.handleChange}
                         placeholder='Title' />
                     </Form.Field>
-                    <Form.Field>
+                    <Form.Field error={!!errors.cover}>
                         <label>Cover</label>
                         {errors.cover && <InlineError message={errors.cover} />}
                         <input 
