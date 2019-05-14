@@ -3,6 +3,7 @@ import { serverUrl} from '../environment/environment';
 
 // action type
 export const FETCHED_MOVIES = "FETCHED_MOVIES";
+export const FETCHED_MOVIES_ERROR = "FETCHED_MOVIES_ERROR";
 
 export function fetchMovies() {
     return dispatch => {
@@ -13,6 +14,9 @@ export function fetchMovies() {
             type: FETCHED_MOVIES,
             payload: data.data
         }))
-        .catch( error => console.log(error))
+        .catch( error => dispatch ({
+            type: FETCHED_MOVIES_ERROR,
+            payload: error    
+        }))
     }
 }
