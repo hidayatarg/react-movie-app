@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Container } from 'semantic-ui-react'
 
 import MoviesPage from './components/pages/MoviesPage';
+import NewMoviePage from './components/pages/NewMoviePage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
@@ -17,7 +18,9 @@ class App extends Component {
 			<div className="App">
 				<Header />
 				<Container text>
+				{/* ! Routing are made here */}
 					<Route path='/movies' component={MoviesPage}></Route>
+					<Route path='/movies/new' component={NewMoviePage}></Route>
 					
         		</Container>
 				<Footer />
