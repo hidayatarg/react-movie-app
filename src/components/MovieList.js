@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import MovieCard from './MovieCard';
-import { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react';
+import { HashLoader } from 'react-spinners';
 
 // stateless component
 const MovieList = ({ movies }) => {
@@ -11,6 +12,13 @@ const MovieList = ({ movies }) => {
 
   const movieList = (
     <div>
+
+      <HashLoader 
+        color = {'#36bdb3'}
+        loading = {movies.fetching}
+        size = {40}
+      />
+
       {
         movies.error.response
           ? <h3>Error retrieving data</h3>

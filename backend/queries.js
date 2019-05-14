@@ -1,16 +1,21 @@
 const pool = require('./pool')
 
 const getMovies = (request, response) => {
-    pool.query('SELECT * FROM movies', (error, results) => {
-        if (error) {
-            throw error
-        }
-        const res = {
-            success: true, 
-            data: results.rows
-        }
-        response.status(200).json(res)
-    })
+
+    setTimeout(() => {
+        pool.query('SELECT * FROM movies', (error, results) => {
+            if (error) {
+                throw error
+            }
+            const res = {
+                success: true,
+                data: results.rows
+            }
+            response.status(200).json(res)
+        })
+    }, 2000);
+
+   
 }
 
 const getMoviesById = (request, response) => {

@@ -8,7 +8,7 @@ import MoviesPage from './components/pages/MoviesPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 
 class App extends Component {
