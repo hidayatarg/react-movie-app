@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import NewMovieForm from '../NewMovieForm';
-export default class NewMoviePage extends Component {
+
+// connect to store (reducer)
+import { connect } from 'react-redux';
+
+class NewMoviePage extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props)
+  }
     state = {
 
     };
@@ -12,3 +20,11 @@ export default class NewMoviePage extends Component {
     )
   }
 }
+
+const mapStateToProps = ({ newMovie }) => {
+  return {
+    newMovie
+  }
+}
+
+export default connect(mapStateToProps, null) (NewMoviePage)
