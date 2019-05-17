@@ -14,10 +14,15 @@ class NewMoviePage extends Component {
 
     };
   render() {
+    // console.log('new movie page props ',this.props);
+    
     return (
       <div>
       {/* Send the onNewMovie Submit action as props to NewMovieForm */}
-        <NewMovieForm onNewMovieSubmit={this.props.onNewMovieSubmit} />
+        <NewMovieForm 
+          newMovie={this.props.newMovie}
+          onNewMovieSubmit={this.props.onNewMovieSubmit} 
+        />
       </div>
     )
   }
