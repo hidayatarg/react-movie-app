@@ -37,7 +37,7 @@ const createMovie = (request, response) => {
 
     pool.query('INSERT INTO movies (title, cover) VALUES ($1, $2)', [title, cover], (error, results) => {
         if (error) {
-            throw error
+            res.status(400).json(error);
         }
         response.status(201).send(`User added with ID: ${results.insertId}`)
     })

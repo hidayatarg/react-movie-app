@@ -8,13 +8,11 @@ export const NEW_MOVIE_PENDING = "NEW_MOVIES_PENDING";
 
 export function onNewMovieSubmit({ title, cover }) {
     const data = {title, cover}
-    console.log('data: ', data);
     return dispatch => {
         dispatch({
             type: "NEW_MOVIE",
-            payload: axios.post(serverUrl + 'movies', data )
-                .then(result => console.log('result: ', result)
-                )
+            payload: axios.post(serverUrl + 'moviessss', data )
+                .then(result => console.log('result: ', result))
         })
     }
 }
