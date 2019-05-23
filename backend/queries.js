@@ -51,19 +51,16 @@ const validate = (data) => {
 
 const updateMovie = (request, response) => {
     const id = parseInt(request.params.id)
-    const {
-        name,
-        email
-    } = request.body
+    const { title, cover } = request.body
 
     pool.query(
-        'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-        [name, email, id],
+        'UPDATE movies SET title = $1, cover = $2 WHERE id = $3',
+        [title, cover, id],
         (error, results) => {
             if (error) {
-                throw error
+                return response.status(500).json({ errors: { global: "Something went wrong" } });
             }
-            response.status(200).send(`User modified with ID: ${id}`)
+            return response.status(200).send(`User modified with ID: ${id}`)
         }
     )
 }
@@ -71,12 +68,12 @@ const updateMovie = (request, response) => {
 const deleteMovie = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('DELETE FROM movies WHERE id = $1', [id], (error, results) => {
         if (error) {
-            throw error
+            return response.status(500).json({ errors: { global: "Something went wrong" } });
         }
-        response.status(200).send(`User deleted with ID: ${id}`)
-    })
+        return response.status(200).send(`User deleted with ID: ${id}`)
+    });
 }
 
 module.exports = {
