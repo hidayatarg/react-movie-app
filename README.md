@@ -25,3 +25,6 @@ npm install react-spinners --save
 Active Link
 
   <Menu.Item as={NavLink} to="/movies" activeClassName="selected">
+
+## Web service delay
+if web service delay it fall a erro on the next state > new movie
