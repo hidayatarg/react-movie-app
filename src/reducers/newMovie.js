@@ -6,6 +6,7 @@ import {
 
 const initialState = {
     fetching: false,
+    done: false,
     movies: [],
     error: {}
 };
@@ -27,7 +28,9 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 movies: action.payload,
-                fetching: false
+                fetching: false,
+                // when data come
+                done: true
             };
         
         default:

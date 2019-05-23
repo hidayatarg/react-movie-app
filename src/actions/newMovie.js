@@ -11,7 +11,7 @@ export function onNewMovieSubmit({ title, cover }) {
     return dispatch => {
         dispatch({
             type: "NEW_MOVIE",
-            payload: axios.post(serverUrl + 'moviessss', data )
+            payload: axios.post(serverUrl + 'movies', data )
                 .then(result => console.log('result: ', result))
         })
     }

@@ -12,6 +12,7 @@ class NewMoviePage extends Component {
     return (
       <div>
       {/* Send the onNewMovie Submit action as props to NewMovieForm */}
+        <h2>New Movie</h2>        
         <NewMovieForm
           newMovie={this.props.newMovie}
           onNewMovieSubmit={this.props.onNewMovieSubmit} />

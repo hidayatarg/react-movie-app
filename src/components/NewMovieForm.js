@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Image, Message } from 'semantic-ui-react'
 import InlineError from './InlineError'
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 
 export default class NewMovieForm extends Component {
@@ -9,7 +10,8 @@ export default class NewMovieForm extends Component {
         title : '',
         cover : '',
         // hata
-        errors: {}
+        errors: {},
+        redirect: false
     };
 
     // Indentify the coming prop type
@@ -29,7 +31,8 @@ export default class NewMovieForm extends Component {
         // console.log('error: ', errors);
         // send the error to state
         this.setState({
-            errors
+            errors,
+            redirect: true
         });
 
         if (Object.keys(errors).length === 0) {
@@ -48,47 +51,51 @@ export default class NewMovieForm extends Component {
 
     render() {
         const { errors } = this.state;
-        console.log('Gelen Props: ',this.props);
-        
+        const form = (
+            <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
+                <Form.Field>
+                    <label>Title</label>
+                    {errors.title && <InlineError message={errors.title} />}
+                    <input
+                        id="title"
+                        name="title"
+                        value={this.state.title}
+                        onChange={this.handleChange}
+                        placeholder='Title' />
+                </Form.Field>
+                <Form.Field>
+                    <label>Cover Url</label>
+                    {errors.cover && <InlineError message={errors.cover} />}
+                    <input
+                        id="cover"
+                        name="cover"
+                        value={this.state.cover}
+                        onChange={this.handleChange}
+                        placeholder='Cover Url' />
+                </Form.Field>
+                <Image src={this.state.cover} size='small' />
+                <div className="clearfix"></div>
+                <Button type='submit'>Submit</Button>
+
+                {
+                    this.props.newMovie.error.response
+                    &&
+                    (
+                        <Message negative>
+                            <Message.Header>We're Sorry</Message.Header>
+                            <p>A problem occured.</p>
+                        </Message>
+                    )
+                }
+            </Form>
+        )
         return (
             <div>
-                <h2>New Movie</h2>
-                <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
-                    <Form.Field>
-                        <label>Title</label>
-                        {errors.title && <InlineError message={errors.title} />}
-                        <input
-                            id="title"
-                            name="title"
-                            value={this.state.title}
-                            onChange={this.handleChange}
-                            placeholder='Title' />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Cover Url</label>
-                        {errors.cover && <InlineError message={errors.cover} />}
-                        <input
-                            id="cover"
-                            name="cover"
-                            value={this.state.cover}
-                            onChange={this.handleChange}
-                            placeholder='Cover Url' />
-                    </Form.Field>
-                    <Image src={this.state.cover} size='small' />
-                    <div className="clearfix"></div>
-                    <Button type='submit'>Submit</Button>
-
-                    {
-                        this.props.newMovie.error.response
-                        &&
-                        (
-                            <Message negative>
-                                <Message.Header>We're Sorry</Message.Header>
-                                <p>A problem occured.</p>
-                            </Message>
-                        )
-                    }
-                </Form>
+            {
+                // if done is true redict to movie or show the form
+                    this.props.newMovie.done && this.state.redirect
+                        ? <Redirect to="/movies" /> : form
+            }
             </div>
         )
     }
