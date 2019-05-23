@@ -5,12 +5,12 @@ import { Grid } from 'semantic-ui-react';
 import { HashLoader } from 'react-spinners';
 
 // stateless component
-const MovieList = ({ movies }) => {
+const MoviesList = ({ movies }) => {
   const emptyMessage = (
     <p>There are no movies yet.</p>
   );
 
-  const movieList = (
+  const moviesList = (
     <div>
 
       <HashLoader 
@@ -35,13 +35,13 @@ const MovieList = ({ movies }) => {
   return (
     <div>
       {/* Movies List */}
-      {movies.length === 0 ? emptyMessage : movieList}
+      {movies.length === 0 ? emptyMessage : moviesList}
     </div>
   )
 
 }
 
-MovieList.prototype = {
+MoviesList.prototype = {
   // state movies convert to array
   movies: PropTypes.shape({
     movies: PropTypes.array.isRequired,
@@ -49,4 +49,4 @@ MovieList.prototype = {
 };
 
 
-export default MovieList
+export default MoviesList

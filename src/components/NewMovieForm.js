@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Image } from 'semantic-ui-react'
+import { Button, Form, Image, Message } from 'semantic-ui-react'
 import InlineError from './InlineError'
 import PropTypes from 'prop-types';
 
@@ -26,7 +26,7 @@ export default class NewMovieForm extends Component {
     onSubmit = () => {
         // validation
         const errors = this.validate();
-        console.log('error: ', errors);
+        // console.log('error: ', errors);
         // send the error to state
         this.setState({
             errors
@@ -39,48 +39,55 @@ export default class NewMovieForm extends Component {
     };
 
     validate = () => {
-        const error = {}
-        if (!this.state.title) error.title = "Can't be blanck";
-        if (!this.state.cover) error.cover = "Can't be blanck";
-        return error
+        const errors = {}
+        if (!this.state.title) errors.title = "Can't be blank";
+        if (!this.state.cover) errors.cover = "Can't be blank";
+        return errors
         
     }
 
     render() {
         const { errors } = this.state;
+        console.log('Gelen Props: ',this.props);
+        
         return (
             <div>
                 <h2>New Movie</h2>
-                <Form onSubmit={this.onSubmit} >
-                    <Form.Field error={!!errors.title}>
+                <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
+                    <Form.Field>
                         <label>Title</label>
-                        {errors.title && <InlineError message = {errors.title}/>}
-                        <input 
-                        id="title"
-                        name="title"
-                        value={this.state.title}
-                        onChange={this.handleChange}
-                        placeholder='Title' />
+                        {errors.title && <InlineError message={errors.title} />}
+                        <input
+                            id="title"
+                            name="title"
+                            value={this.state.title}
+                            onChange={this.handleChange}
+                            placeholder='Title' />
                     </Form.Field>
-                    <Form.Field error={!!errors.cover}>
-                        <label>Cover</label>
+                    <Form.Field>
+                        <label>Cover Url</label>
                         {errors.cover && <InlineError message={errors.cover} />}
-                        <input 
-                        id="cover"
-                        name="cover"
-                        value={this.state.cover}
-                        onChange={this.handleChange}
-                        placeholder='Cover' />
+                        <input
+                            id="cover"
+                            name="cover"
+                            value={this.state.cover}
+                            onChange={this.handleChange}
+                            placeholder='Cover Url' />
                     </Form.Field>
-                    <Image 
-                        src={this.state.cover}
-                        size = 'small' />
-                    <div className="clearFix"></div>
-                    <Button 
-                        primary 
-                        type='submit'>
-                        Submit
-                        </Button>
+                    <Image src={this.state.cover} size='small' />
+                    <div className="clearfix"></div>
+                    <Button type='submit'>Submit</Button>
+
+                    {
+                        this.props.newMovie.error.response
+                        &&
+                        (
+                            <Message negative>
+                                <Message.Header>We're Sorry</Message.Header>
+                                <p>A problem occured while recording.</p>
+                            </Message>
+                        )
+                    }
                 </Form>
             </div>
         )

@@ -6,18 +6,15 @@ import { onNewMovieSubmit } from '../../actions/newMovie'
 import { connect } from 'react-redux';
 
 class NewMoviePage extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props)
-  }
-    state = {
-
-    };
+ 
   render() {
+    // console.log('new movie page props ',this.props);
     return (
       <div>
       {/* Send the onNewMovie Submit action as props to NewMovieForm */}
-        <NewMovieForm onNewMovieSubmit={this.props.onNewMovieSubmit} />
+        <NewMovieForm
+          newMovie={this.props.newMovie}
+          onNewMovieSubmit={this.props.onNewMovieSubmit} />
       </div>
     )
   }

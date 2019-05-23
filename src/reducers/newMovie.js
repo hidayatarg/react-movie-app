@@ -1,4 +1,8 @@
-import { NEW_MOVIE_FULFILLED, NEW_MOVIE_REJECTED, NEW_MOVIE_PENDING } from '../actions/newMovie';
+import {
+    NEW_MOVIE_PENDING,
+    NEW_MOVIE_FULFILLED,
+    NEW_MOVIE_REJECTED
+} from '../actions/newMovie';
 
 const initialState = {
     fetching: false,
@@ -7,7 +11,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case NEW_MOVIE_PENDING:
             return {
                 ...state,

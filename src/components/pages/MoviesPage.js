@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import MovieList from '../MovieList'
+import MoviesList from '../MoviesList'
 import { fetchMovies } from '../../actions/movies'
 
 
@@ -16,13 +16,13 @@ class MoviesPage extends Component {
   }
 
   render() {
-    console.log('Props: ', this.props);
+    // console.log('Props: ', this.props);
     
     return (
       <div>
         <h2>Movies Page</h2>
         {/* calling Movie Component Passing the movies */}
-        <MovieList movies={this.props.movies}></MovieList>
+        <MoviesList movies={this.props.movies}></MoviesList>
       </div>
     )
   }
