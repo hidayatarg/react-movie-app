@@ -17,18 +17,19 @@ export default (state = initialState, action) => {
                 ...state,
                 fetching: true
             };
-        case NEW_MOVIE_FULFILLED:
-            return {
-                ...state,
-                movies: action.payload,
-                fetching: false
-            };
         case NEW_MOVIE_REJECTED:
             return {
                 ...state,
                 error: action.payload,
                 fetching: false
             };
+        case NEW_MOVIE_FULFILLED:
+            return {
+                ...state,
+                movies: action.payload,
+                fetching: false
+            };
+        
         default:
             return state;
     }
