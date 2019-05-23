@@ -7,8 +7,8 @@ import { Redirect } from 'react-router-dom';
 
 export default class NewMovieForm extends Component {
     state = {
-        title : '',
-        cover : '',
+        title : this.props.movie ? this.props.movie.title : '',
+        cover : this.props.movie ? this.props.movie.cover : '',
         // hata
         errors: {},
         redirect: false
@@ -50,6 +50,7 @@ export default class NewMovieForm extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { errors } = this.state;
         const form = (
             <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
@@ -89,6 +90,7 @@ export default class NewMovieForm extends Component {
                 }
             </Form>
         )
+        
         return (
             <div>
             {
