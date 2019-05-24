@@ -35,13 +35,15 @@ Finding the change in new movie form, react life Cyle to Understand the change i
 
 ```javascript
 componentWillReceiveProps(nextProps) {
-        // if there is an incoming title and it is not equal with current title in the state
-        if (nextProps.newMovie.movie.title 
-            && 
-            nextProps.newMovie.movie.title !== this.state.title) {
-
-            }
-    }
-    
-
+  // if there is an incoming title and it is not equal with current title in the state
+  if (nextProps.newMovie.movie.title 
+      && 
+      nextProps.newMovie.movie.title !== this.state.title) {
+        // set the state to the new props
+        this.setState({
+            title: nextProps.newMovie.movie.title,
+            cover: nextProps.newMovie.movie.cover
+        });
+      }
+}
 ```

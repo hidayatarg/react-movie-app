@@ -21,11 +21,12 @@ export default class NewMovieForm extends Component {
 
     // life Cyle to Understand the change 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.newMovie.movie.title 
-            && nextProps.newMovie.movie.title !== this.state.title) {
+        const { movie } = nextProps.newMovie;
+        if (movie.title 
+            && movie.title !== this.state.title) {
                 this.setState({
-                    title: nextProps.newMovie.movie.title,
-                    cover: nextProps.newMovie.movie.cover
+                    title: movie.title,
+                    cover: movie.cover
                 });
             }
     }
