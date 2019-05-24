@@ -9,7 +9,7 @@ class NewMoviePage extends Component {
  
 
   render() {
-    console.log('Sectin filim ids ',this.props);
+    console.log('Sectin filim ids ',this.props.match.params.id);
     return (
       <div>
       {/* Send the onNewMovie Submit action as props to NewMovieForm */}
@@ -25,9 +25,10 @@ class NewMoviePage extends Component {
 
 // TODO: Fix here
 const mapStateToProps = ({ newMovie, movies }, props) => {
+  // id should be converted to string
   return {
     newMovie, 
-    movie: movies.movies.find(item => item.id === 3)
+    movie: movies.movies.find(item => item.id === +props.match.params.id)
 
   }
 };
