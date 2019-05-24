@@ -19,6 +19,18 @@ export default class NewMovieForm extends Component {
         onNewMovieSubmit : PropTypes.func.isRequired
     }
 
+    // life Cyle to Understand the change 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.newMovie.movie.title 
+            && nextProps.newMovie.movie.title !== this.state.title) {
+                this.setState({
+                    title: nextProps.newMovie.movie.title,
+                    cover: nextProps.newMovie.movie.cover
+                });
+            }
+    }
+    
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
