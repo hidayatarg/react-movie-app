@@ -47,3 +47,5 @@ componentWillReceiveProps(nextProps) {
       }
 }
 ```
+
+After delete the screen shouldrefresh and delte that user 

@@ -72,7 +72,7 @@ const deleteMovie = (request, response) => {
         if (error) {
             return response.status(500).json({ errors: { global: "Something went wrong" } });
         }
-        return response.status(200).send(`User deleted with ID: ${id}`)
+        return response.status(200).json('OK')
     });
 }
 
