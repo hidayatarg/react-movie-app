@@ -1,13 +1,13 @@
 const pool = require('./pool')
 
 const getMovies = (request, response) => {
-        pool.query('SELECT * FROM movies', (error, results) => {
+        pool.query('SELECT * FROM movies ORDER BY "id" DESC', (error, results) => {
             if (error) {
                 throw error
             }
             const res = {
                 success: true,
-                data: results.rows
+                data: results.rows.sort(item =>item.as)
             }
             response.status(200).json(res)
         });
