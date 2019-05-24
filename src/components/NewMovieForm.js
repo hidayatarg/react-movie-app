@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 export default class NewMovieForm extends Component {
     state = {
+        id : this.props.movie ? this.props.movie.id : '',
         title : this.props.movie ? this.props.movie.title : '',
         cover : this.props.movie ? this.props.movie.cover : '',
         // hata
@@ -16,14 +17,16 @@ export default class NewMovieForm extends Component {
 
     // Indentify the coming prop type
     static propTypes = {
-        onNewMovieSubmit : PropTypes.func.isRequired
+        onNewMovieSubmit : PropTypes.func.isRequired,
+        onUpdateMovieSubmit : PropTypes.func.isRequired
     }
 
     // life Cyle to Understand the change 
     componentWillReceiveProps(nextProps) {
         const { movie } = nextProps.newMovie;
         if (movie.title 
-            && movie.title !== this.state.title) {
+            && movie.title !== this.state.title
+            || movie.cover && movie.cover!== this.state.cover) {
                 this.setState({
                     title: movie.title,
                     cover: movie.cover
@@ -48,8 +51,15 @@ export default class NewMovieForm extends Component {
             redirect: true
         });
 
+        const id = this.state.id || this.props.newMovie.movie.id;
+        
+        // if there is id it will be update
+        // if no id it will be added
         if (Object.keys(errors).length === 0) {
-            this.props.onNewMovieSubmit(this.state);
+            if(!id)
+                this.props.onNewMovieSubmit(this.state);
+            else
+                this.props.onUpdateMovieSubmit({...this.state, id});
         }
         
     };
@@ -63,7 +73,6 @@ export default class NewMovieForm extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { errors } = this.state;
         const form = (
             <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>

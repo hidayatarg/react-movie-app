@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NewMovieForm from '../NewMovieForm';
-import { onNewMovieSubmit, fetchMovie } from '../../actions/newMovie'
+import { onNewMovieSubmit, fetchMovie, onUpdateMovieSubmit } from '../../actions/newMovie'
 
 // connect to store (reducer)
 import { connect } from 'react-redux';
@@ -18,7 +18,7 @@ class NewMoviePage extends Component {
   
 
   render() {
-    console.log('Sectin filim ids ',this.props.match.params.id);
+    // console.log('Sectin filim ids ',this.props.match.params.id);
     return (
       <div>
       {/* Send the onNewMovie Submit action as props to NewMovieForm */}
@@ -26,7 +26,8 @@ class NewMoviePage extends Component {
         <NewMovieForm
           movie={this.props.movie}
           newMovie={this.props.newMovie}
-          onNewMovieSubmit={this.props.onNewMovieSubmit} />
+          onNewMovieSubmit={this.props.onNewMovieSubmit}
+          onUpdateMovieSubmit={this.props.onUpdateMovieSubmit} />
       </div>
     )
   }
@@ -45,6 +46,7 @@ const mapStateToProps = ({ newMovie, movies }, props) => {
 // Here importing the actions
 const mapDispatchToProps = {
   onNewMovieSubmit,
+  onUpdateMovieSubmit,
   fetchMovie
 };
 
