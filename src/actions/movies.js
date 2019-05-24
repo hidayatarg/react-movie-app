@@ -27,11 +27,7 @@ export function deleteMovie(id) {
         dispatch({
             type: "DELETE_MOVIE",
             payload: axios.delete(serverUrl + 'movies/' + id)
-                .then(result => {
-                    const res = Object.assign({}, result, { id })
-                    console.log('REESS', res)
-                    return res
-                })
+                .then(result =>  Object.assign({}, result, { id }))
         })
     }
 }
