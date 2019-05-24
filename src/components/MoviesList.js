@@ -5,7 +5,8 @@ import { Grid } from 'semantic-ui-react';
 import { HashLoader } from 'react-spinners';
 
 // stateless component
-const MoviesList = ({ movies }) => {
+// delte movie come from parent
+const MoviesList = ({ movies, deleteMovie }) => {
   const emptyMessage = (
     <p>There are no movies yet.</p>
   );
@@ -25,7 +26,11 @@ const MoviesList = ({ movies }) => {
           : 
           <Grid stackable columns={3}>
           {
-            movies.movies.map(movie => <MovieCard key={movie.id} movie={movie} />)
+            movies.movies.map(movie => 
+            <MovieCard 
+              key={movie.id} 
+              deleteMovie={deleteMovie}
+              movie={movie} />)
           }
           </Grid>
       }
