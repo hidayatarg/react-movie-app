@@ -28,3 +28,5 @@ Active Link
 
 ## Web service delay
 if web service delay it fall a erro on the next state > new movie
+
+When ever we refresh the page it will lose the props array so we need Fetch the movie via id from database

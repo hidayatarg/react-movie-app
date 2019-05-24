@@ -21,7 +21,7 @@ const getMoviesById = (request, response) => {
         if (error) {
             return response.status(500).json({ errors: { global: "Something went wrong" } });
         }
-       return response.status(200).json(results.rows)
+       return response.status(200).json(results.rows[0])
     });
 }
 

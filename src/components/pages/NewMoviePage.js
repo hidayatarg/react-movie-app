@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import NewMovieForm from '../NewMovieForm';
-import { onNewMovieSubmit } from '../../actions/newMovie'
+import { onNewMovieSubmit, fetchMovie } from '../../actions/newMovie'
 
 // connect to store (reducer)
 import { connect } from 'react-redux';
 
 class NewMoviePage extends Component {
  
+  componentDidMount() {
+    const { match } = this.props;
+    // there is no movie but there is id in the router
+    // take from backend service via id
+    if (!this.props.movie && match.params.id){
+      this.props.fetchMovie(match.params.id);
+    }
+  }
+  
 
   render() {
     console.log('Sectin filim ids ',this.props.match.params.id);
@@ -35,7 +44,8 @@ const mapStateToProps = ({ newMovie, movies }, props) => {
 
 // Here importing the actions
 const mapDispatchToProps = {
-  onNewMovieSubmit
+  onNewMovieSubmit,
+  fetchMovie
 };
 
 export default connect(mapStateToProps, mapDispatchToProps) (NewMoviePage)
