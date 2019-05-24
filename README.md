@@ -25,3 +25,25 @@ npm install react-spinners --save
 Active Link
 
   <Menu.Item as={NavLink} to="/movies" activeClassName="selected">
+
+## Web service delay
+if web service delay it fall a erro on the next state > new movie
+
+When ever we refresh the page it will lose the props array so we need Fetch the movie via id from database
+
+Finding the change in new movie form, react life Cyle to Understand the change in the props by using componentWillReceiveProps(nextProps)
+
+```javascript
+componentWillReceiveProps(nextProps) {
+  // if there is an incoming title and it is not equal with current title in the state
+  if (nextProps.newMovie.movie.title 
+      && 
+      nextProps.newMovie.movie.title !== this.state.title) {
+        // set the state to the new props
+        this.setState({
+            title: nextProps.newMovie.movie.title,
+            cover: nextProps.newMovie.movie.cover
+        });
+      }
+}
+```
