@@ -6,7 +6,7 @@ export const LOGIN_FULFILLED = "LOGIN_FULFILLED";
 export const LOGIN_REJECTED = "LOGIN_REJECTED";
 export const LOGIN_PENDING = "LOGIN_PENDING";
 
-export function login({ username, password }) {
+export function loginUser({ username, password }) {
     return dispatch => {
         const data = { username, password }
         dispatch({

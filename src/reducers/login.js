@@ -7,15 +7,17 @@ import {
 const initialState = {
     fetching: false,
     done: false,
-    error: {},
+    token: {},
+    error: {}
 };
 
-export default (state = initialStatem, action) => {
+export default (state = initialState, action) => {
     switch(action.type){
         case LOGIN_PENDING:
             return {
                 ...state,
-                fetching: true
+                fetching: true,
+                done: false
             };
         case LOGIN_REJECTED:
             return {
@@ -27,9 +29,12 @@ export default (state = initialStatem, action) => {
             return {
                 // set the token 
                 ...state,
-                // token: action.payload,
+                // token: action.payload.token,
                 fetching: false,
                 done: true
             }
+
+        default:
+            return state;
     }
 }

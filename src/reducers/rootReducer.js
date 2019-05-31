@@ -5,8 +5,10 @@ import { combineReducers } from 'redux';
 // Combine Reducers
 import movies from './movies';
 import newMovie from './newMovie';
+import login from './login';
 
 export default combineReducers({
+    login,
     movies,
     newMovie
 });

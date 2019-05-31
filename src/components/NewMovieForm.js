@@ -73,6 +73,8 @@ export default class NewMovieForm extends Component {
     }
 
     render() {
+        console.log('gelen props:  ', this.props);
+        
         const { errors } = this.state;
         const form = (
             <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
@@ -113,6 +115,7 @@ export default class NewMovieForm extends Component {
             </Form>
         )
         
+        console.log('durum: ', this.props.newMovie.done)
         return (
             <div>
             {

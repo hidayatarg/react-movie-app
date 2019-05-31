@@ -19,6 +19,8 @@ class NewMoviePage extends Component {
 
   render() {
     // console.log('Sectin filim ids ',this.props.match.params.id);
+    console.log('gidecek props:', this.props);
+
     return (
       <div>
       {/* Send the onNewMovie Submit action as props to NewMovieForm */}

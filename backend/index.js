@@ -25,8 +25,8 @@ app.post('/api/movies', db.createMovie)
 app.put('/api/movies/:id', db.updateMovie)
 app.delete('/api/movies/:id', db.deleteMovie)
 
-app.post('/api/login', auth.login);
-app.post('/api/register', auth.register);
+app.post('/api/auth/login', auth.login);
+app.post('/api/auth/register', auth.register);
 
 
 app.use((req, res) => {
