@@ -8,6 +8,7 @@ import MoviesPage from './components/pages/MoviesPage';
 import NewMoviePage from './components/pages/NewMoviePage';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import LoginPage from './components/pages/LoginPage';
 
 import { Route } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ class App extends Component {
 					<Route exact path='/movies' component={MoviesPage}></Route>
 					<Route exact path='/movies/new' component={NewMoviePage}></Route>
 					<Route exact path='/movie/:id' component={NewMoviePage}></Route>
+					<Route exact path='/login' component={LoginPage}></Route>
 					
         		</Container>
 				<Footer />

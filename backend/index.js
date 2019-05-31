@@ -17,11 +17,17 @@ app.get('/', (request, response) => {
 })
 
 const db = require('./queries')
+const auth = require('./auth')
+
 app.get('/api/movies', db.getMovies)
 app.get('/api/movies/:id', db.getMoviesById)
 app.post('/api/movies', db.createMovie)
 app.put('/api/movies/:id', db.updateMovie)
 app.delete('/api/movies/:id', db.deleteMovie)
+
+app.post('/api/login', auth.login);
+app.post('/api/register', auth.register);
+
 
 app.use((req, res) => {
     res.status(404).json({
