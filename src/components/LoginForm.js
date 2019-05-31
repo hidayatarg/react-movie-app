@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Message } from "semantic-ui-react";
 import InlineError from "./InlineError";
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
@@ -82,7 +82,18 @@ export default class LoginForm extends Component {
               />
             </Form.Field>
             <Button type="submit" className="primary">Submit</Button>
+            {
+              this.props.login.error.response
+              &&
+              (
+                <Message negative>
+                  <Message.Header>We're Sorry</Message.Header>
+                  <p>A problem occured.</p>
+                </Message>
+              )
+            }
           </Form>
+          
         ) 
       console.log('durum: ', this.props.login.done)
 

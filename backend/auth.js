@@ -36,23 +36,32 @@ const login = (request, response) => {
             if (error) {
                 return response.status(500).json({ errors: { global: "Something went wrong" } });
             }
-            const dbPassword = result.rows[0].password;        
-            bcrypt.compare(password, dbPassword, (err, results) => {
-                if (err) {
-                    return response.status(401).json({
-                        success: false
-                    })
-                }
-                if (results) {
-                    let token = tokenCreator(result.rows[0].id, result.rows[0].username, '24h')
-                    return response.status(200).json({
-                        success: true,
-                        token: token,
-                        // roles: '',,
-                        message: 'Sign-in Successfully'
-                    });
-                }
-            })
+            if (result.rows.length > 0){
+                const dbPassword = result.rows[0].password;  
+                bcrypt.compare(password, dbPassword, (err, results) => {
+                    if (err) {
+                        return response.status(401).json({
+                            success: false
+                        })
+                    }
+                    if (results) {
+                        let token = tokenCreator(result.rows[0].id, result.rows[0].username, '24h')
+                        return response.status(200).json({
+                            success: true,
+                            token: token,
+                            // roles: '',,
+                            message: 'Sign-in Successfully'
+                        });
+                    }
+                })      
+            }
+            else {
+                return response.status(401).json({
+                    success: false,
+                    message: 'User is not avaliable'
+                })
+            }
+            
         })
     } else {
         response.status(400).json({ errors });
