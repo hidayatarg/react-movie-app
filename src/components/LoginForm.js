@@ -56,7 +56,7 @@ export default class LoginForm extends Component {
         const form = (
           <Form
             onSubmit={this.onSubmit}
-
+            loading={this.props.login.fetching}
           >
             <Form.Field>
               <label>Username</label>
