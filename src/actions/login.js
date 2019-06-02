@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { serverUrl } from '../environment/environment';
-
+import setAuthorizationToken from '../utils/setAuthorizationToken';
 // action type
 export const LOGIN_FULFILLED = "LOGIN_FULFILLED";
 export const LOGIN_REJECTED = "LOGIN_REJECTED";
@@ -16,6 +16,8 @@ export function loginUser({ username, password }) {
                     const token = result.data.token
                     console.log('cikan data: ' ,result.data);
                     localStorage.setItem('token', token);
+                    debugger
+                    setAuthorizationToken(token);
                 })
         })
     }

@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// authorization
+import setAuthorizationToken from './utils/setAuthorizationToken';
+
 // creating store
 import { createStore, applyMiddleware } from 'redux';
 
@@ -27,6 +30,8 @@ const store = createStore(
         applyMiddleware(reduxPromise, thunk, logger)
     )
 );
+
+setAuthorizationToken(localStorage.token)
 
 ReactDOM.render(
     <BrowserRouter>
