@@ -25,7 +25,6 @@ export function loginUser({ username, password }) {
                     const token = result.data.token
                     console.log('cikan data: ' ,result.data);
                     localStorage.setItem('token', token);
-                    debugger
                     setAuthorizationToken(token);
                     console.log('decode token sonucu: ', jwt.decode(token));
                     dispatch(setCurrentUser(jwt.decode(token)));

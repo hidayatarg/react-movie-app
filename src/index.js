@@ -22,6 +22,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';
+import { setCurrentUser } from './actions/login';
+import jwt from 'jsonwebtoken';
 
 const store = createStore(
     rootReducer,
@@ -31,7 +33,11 @@ const store = createStore(
     )
 );
 
-setAuthorizationToken(localStorage.token)
+if (localStorage.token){
+    setAuthorizationToken(localStorage.token);
+    store.dispatch(setCurrentUser(jwt.decode(localStorage.token)));
+
+}
 
 ReactDOM.render(
     <BrowserRouter>
