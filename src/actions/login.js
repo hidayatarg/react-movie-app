@@ -12,7 +12,11 @@ export function loginUser({ username, password }) {
         dispatch({
             type: "LOGIN",
             payload: axios.post(serverUrl + 'auth/login', data)
-                .then(result => console.log('result: ', result))
+                .then(result => {
+                    const token = result.data.token
+                    console.log('cikan data: ' ,result.data);
+                    localStorage.setItem('token', token);
+                })
         })
     }
 }
