@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { serverUrl } from '../environment/environment';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
+import jwt from 'jsonwebtoken';
 // action type
 export const LOGIN_FULFILLED = "LOGIN_FULFILLED";
 export const LOGIN_REJECTED = "LOGIN_REJECTED";
@@ -18,6 +19,8 @@ export function loginUser({ username, password }) {
                     localStorage.setItem('token', token);
                     debugger
                     setAuthorizationToken(token);
+                    console.log('decode token sonucu: ', jwt.decode(token));
+                    
                 })
         })
     }
