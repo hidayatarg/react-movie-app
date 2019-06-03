@@ -4,6 +4,7 @@ import { menuStyle, fixedMenuStyle } from '../helpers/styleHelpers';
 import { Container, Image, Menu, Visibility } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { logout } from '../actions/login';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
     state = {
@@ -78,12 +79,16 @@ class Header extends Component {
 
 }
 
+Header.prototypes = {
+    login: PropTypes.object.isRequired
+}
+
 const mapStateToProps = ({ login }) => {
     return {
         login
     }
 }
-
+// the method coming from action
 const mapDispatchToProps = {
     logout
 }
