@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { menuStyle, fixedMenuStyle } from '../helpers/styleHelpers';
 import { Container, Image, Menu, Visibility } from 'semantic-ui-react'
 import { connect } from 'react-redux';
+import { logout } from '../actions/login';
 
 class Header extends Component {
     state = {
@@ -13,6 +14,10 @@ class Header extends Component {
 
     stickTopMenu = () => this.setState({ menuFixed: true })
     unStickTopMenu = () => this.setState({ menuFixed: null })
+    // ES6 doesnot need binding
+    onLogOut = () => {
+        this.props.logout();
+    }
 
     render() {
         const { menuFixed } = this.state
@@ -31,8 +36,8 @@ class Header extends Component {
                 <Menu.Item as={NavLink} to="/movies/new" exact>
                     Add New
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/login" exact>
-                    login
+                <Menu.Item as={NavLink} to="/login" onClick={this.onLogOut} exact>
+                    Log Out
                 </Menu.Item>
             </Container>
         );
@@ -79,5 +84,9 @@ const mapStateToProps = ({ login }) => {
     }
 }
 
+const mapDispatchToProps = {
+    logout
+}
 
-export default connect(mapStateToProps)(Header)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

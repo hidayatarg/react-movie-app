@@ -15,6 +15,19 @@ export function setCurrentUser(user) {
        user
     }
 }
+
+export function logout() {
+    return dispatch => {
+        // remove token
+        localStorage.removeItem('token');
+        // set authorization token
+        // delete authorization header from future requests
+        setAuthorizationToken(false);
+        dispatch(setCurrentUser({}));
+
+    }
+}
+
 export function loginUser({ username, password }) {
     return dispatch => {
         const data = { username, password }
