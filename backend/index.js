@@ -2,8 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const config = require('./config');
-const cors = require('cors')
-
+const cors = require('cors');
+const events = require('./event');
 
 app.use(bodyParser.json())
 app.use(
@@ -27,6 +27,9 @@ app.delete('/api/movies/:id', db.deleteMovie)
 
 app.post('/api/auth/login', auth.login);
 app.post('/api/auth/register', auth.register);
+
+// standard style of defining routes
+app.use('/api/events', events);
 
 
 app.use((req, res) => {
