@@ -49,3 +49,20 @@ componentWillReceiveProps(nextProps) {
 ```
 
 After delete the screen shouldrefresh and delte that user 
+
+### High order component
+Wrapping a function by other function
+
+```javascript
+function printMessage(){
+  
+}
+function log(func){
+  console.log('start');
+
+  func();
+
+  console.log('finish');
+
+}
+```

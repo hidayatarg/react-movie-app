@@ -11,6 +11,8 @@ import Header from './components/Header';
 import LoginPage from './components/pages/LoginPage';
 
 import { Route } from 'react-router-dom';
+// protecting client routes
+import requireAuth from './utils/requireAuth';
 
 
 class App extends Component {
@@ -21,7 +23,7 @@ class App extends Component {
 				<Container text>
 				{/* ! Routing are made here */}
 					<Route exact path='/movies' component={MoviesPage}></Route>
-					<Route exact path='/movies/new' component={NewMoviePage}></Route>
+					<Route exact path='/movies/new' component={requireAuth(NewMoviePage)}></Route>
 					<Route exact path='/movie/:id' component={NewMoviePage}></Route>
 					<Route exact path='/login' component={LoginPage}></Route>
 					
