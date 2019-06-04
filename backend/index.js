@@ -4,6 +4,7 @@ const app = express()
 const config = require('./config');
 const cors = require('cors');
 const events = require('./event');
+const authenticate = require('./middleware/authenticate');
 
 app.use(bodyParser.json())
 app.use(
@@ -21,7 +22,7 @@ const auth = require('./auth')
 
 app.get('/api/movies', db.getMovies)
 app.get('/api/movies/:id', db.getMoviesById)
-app.post('/api/movies', db.createMovie)
+app.post('/api/movies', authenticate,db.createMovie)
 app.put('/api/movies/:id', db.updateMovie)
 app.delete('/api/movies/:id', db.deleteMovie)
 
