@@ -23,7 +23,7 @@ class Header extends Component {
     render() {
         const { menuFixed } = this.state
         const { isAuthenticated } = this.props.login;
-        console.log('Props: ', isAuthenticated);
+        // console.log('Props: ', isAuthenticated);
 
         const userLinks = (
             <Container text>
