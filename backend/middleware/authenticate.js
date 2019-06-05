@@ -11,9 +11,9 @@ module.exports = (req, res, next) => {
 
     if (authorizationHeader) {
         // from front end it will come as Bearer TTTTOOOKKKEEEN
-        // token = authorizationHeader.split(' ')[1];
+         token = authorizationHeader.split(' ')[1];
         // for backend
-        token = authorizationHeader;
+        // token = authorizationHeader;
 
     }
 
