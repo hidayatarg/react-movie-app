@@ -1,3 +1,20 @@
+## Project Installation
+- Step 1: Go to Project Directory 
+`yarn install`. It will install all dependencies for React
+- Step 2: Go to Project Directory/backend and `yarn install`. It will install all dependencies for Node.js Backend
+
+## Start Project
+- Step 1: Go to Project Directory `yarn start`. It will start the React Project
+- Step 2: Go to the Project Directory/backend `nodemon`. NOTE that Nodemon Should be installed or type `node index.js`. I will start the backend
+
+GO to localhost:3000. 
+
+- To add a movie you need admin credentials
+  - Username: osman and password: 1234
+  
+
+## Project Dependencies
+
 npm i redux react-redux react-thunk --save
 
 npm i --save redux-devtools-extension
